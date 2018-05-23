@@ -1,6 +1,6 @@
 package app;
 
-import app.beer.BeerService;
+import app.service.BeerService;
 import org.h2.server.web.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @SpringBootApplication
 @EnableScheduling
 public class Application {
+
     @Autowired
     private BeerService beerService;
 
@@ -21,12 +22,12 @@ public class Application {
     }
 
     @Scheduled(fixedRate = 3600000)
-    public void doSomethingAfterStartup() throws Exception {
-        beerService.getBeers();
+    public void scheduled() throws Exception {
+        beerService.importBeers();
     }
 
     @Bean
-    ServletRegistrationBean h2ServletRegistration() {
+    public ServletRegistrationBean h2ServletRegistration() {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;

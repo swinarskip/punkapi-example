@@ -1,22 +1,22 @@
-package app.beer;
+package app.entity;
 
 import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
 public class Beer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     private String name;
 
     private String tagline;
 
-    private String first_brewed;
+    private String firstBrewed;
 
     @Lob
     private String description;
@@ -28,26 +28,27 @@ public class Beer {
 
     @ElementCollection
     @SerializedName("food_pairing")
-    private List<String> foodPairing;
+    private Collection<String> foodPairing;
 
     public Beer() {
+        // Empty constructor for Hibernate
     }
 
-    public Beer(String name, String tagline, String first_brewed, String description, String image_url, float ibu, List<String> food_pairings) {
+    public Beer(String name, String tagline, String firstBrewed, String description, String imageUrl, float ibu, Collection<String> foodPairing) {
         this.name = name;
         this.tagline = tagline;
-        this.first_brewed = first_brewed;
+        this.firstBrewed = firstBrewed;
         this.description = description;
-        this.imageUrl = image_url;
+        this.imageUrl = imageUrl;
         this.ibu = ibu;
-        this.foodPairing = food_pairings;
+        this.foodPairing = foodPairing;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -67,12 +68,12 @@ public class Beer {
         this.tagline = tagline;
     }
 
-    public String getFirst_brewed() {
-        return first_brewed;
+    public String getFirstBrewed() {
+        return firstBrewed;
     }
 
-    public void setFirst_brewed(String first_brewed) {
-        this.first_brewed = first_brewed;
+    public void setFirstBrewed(String firstBrewed) {
+        this.firstBrewed = firstBrewed;
     }
 
     public String getDescription() {
@@ -99,11 +100,11 @@ public class Beer {
         this.ibu = ibu;
     }
 
-    public List<String> getFoodPairing() {
+    public Collection<String> getFoodPairing() {
         return foodPairing;
     }
 
-    public void setFoodPairing(List<String> foodPairing) {
+    public void setFoodPairing(Collection<String> foodPairing) {
         this.foodPairing = foodPairing;
     }
 }

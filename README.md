@@ -1,23 +1,23 @@
 # Punkapi Example
 
-## Run the application
+Simple example of using [PUNK API](https://punkapi.com) and [HSQLDB](http://hsqldb.org).
 
-+ Run the application:
+## Run the application
 
 ```
 ./gradlew bootRun
 ```
 
-+ Package the JAR:
++ Open [http://localhost](http://localhost) in your browser
+
+## Build JAR
 
 ```
 ./gradlew build
 ```
 
-## Create beer
-
 ```
-curl -X POST -i --user admin:test http://localhost
+java -jar ./build/libs/punkapi-example.jar
 ```
 
 ## Get beers
@@ -26,8 +26,20 @@ curl -X POST -i --user admin:test http://localhost
 curl http://localhost
 ```
 
+## Find beers by food pairing
+
+```
+curl http://localhost/foodpairings/search/lemon
+```
+
+## Create beer
+
+```
+curl -X POST -i --user admin:admin -d name=Tyskie http://localhost/beers
+```
+
 ## Check in HSQLDB
 
-1. Connect using http://localhost:8080/console
+1. Connect using [http://localhost/console](http://localhost/console)
 2. Use JDBC URL `jdbc:h2:mem:app_db`
-3. Run the query `SELECT * FROM EMPLOYEE`
+3. Run the query `SELECT * FROM BEER`

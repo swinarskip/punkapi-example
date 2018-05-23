@@ -22,14 +22,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin").password("test").roles("USER");
+                .withUser("admin").password("admin").roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/console/**").permitAll()
-                .antMatchers("/beers").hasRole("USER")
+                .antMatchers("/beers").hasRole("ADMIN")
                 .and()
                 .httpBasic()
                 .and()
