@@ -17,7 +17,7 @@ Simple example of using [PUNK API](https://punkapi.com) and [HSQLDB](http://hsql
 ```
 
 ```
-java -jar ./build/libs/punkapi-example-1.0.2.jar
+java -jar ./build/libs/punkapi-example-1.0.3.jar
 ```
 
 ## Get beers

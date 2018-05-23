@@ -16,6 +16,7 @@ public class Beer {
 
     private String tagline;
 
+    @SerializedName("first_brewed")
     private String firstBrewed;
 
     @Lob
